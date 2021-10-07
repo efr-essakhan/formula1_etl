@@ -1,10 +1,18 @@
 # Databricks notebook source
+dbutils.secrets.help()
+
+# COMMAND ----------
+
+dbutils.secrets.listScopes()
+
+# COMMAND ----------
+
 #configuration - note you should put these credentials into azure secrets instead, rather then exposing it like this.
 
 storage_account_name = "formula1strg"
-client_id = "17136f9e-cbfa-4417-ba48-ab330f5d4172"
-tenant_id = "f262f29c-0252-4f00-bcd2-e5f1428a9b9c"
-client_secret = "4Xt7Q~xBJ46ItSdrxyTfDV6erVvIEueJn_7dw"
+client_id = dbutils.secrets.get("formula1-scope", 'databricks-app-client-id')
+tenant_id = dbutils.secrets.get("formula1-scope", 'databricks-app-tenant-id')
+client_secret = dbutils.secrets.get("formula1-scope", 'databricks-app-client-secret')
 
 
 # COMMAND ----------
